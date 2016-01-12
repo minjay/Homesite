@@ -78,6 +78,7 @@ bst = xgb.train(param, xg_train, num_round, evallist, early_stopping_rounds=100)
 X_test = X_all[n_train:, :]
 xg_test = xgb.DMatrix(X_test)
 
+# the pred is prob
 y_pred = bst.predict(xg_test, ntree_limit=bst.best_iteration)
 sub = pd.DataFrame(data={'QuoteNumber':ids, 'QuoteConversion_Flag':y_pred}, 
 	columns=['QuoteNumber', 'QuoteConversion_Flag'])
